@@ -12,22 +12,7 @@ const session = require('express-session');
 var router = require('./src/routes');
 // var usersRouter = require('./routes/users');
 
-let configPath = path.join(process.cwd(), 'config', 'develop.yaml');
-let config = yaml.load(fs.readFileSync(configPath));
 
-let mongoConfig = _.get(config, 'mongo');
-
-const mongoose = require('mongoose');
-mongoose
-  .connect(`mongodb://${mongoConfig['ip']}:${mongoConfig['port']}/${mongoConfig['database']}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => console.log('Successfully connected to mongodb'))
-  .catch(e => {
-    console.error(e);
-    throw new Error('mongo DB connection fail');
-  });
 
 var app = express();
 
