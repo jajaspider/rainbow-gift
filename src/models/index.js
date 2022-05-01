@@ -23,6 +23,7 @@ mongoose
 // const roomSchema = require('./room');
 const userSchema = require('./user');
 const gifticonSchema = require('./gifticon');
+const categorySchema = require('./categories');
 // const permissionSchema = require('./permission');
 // const manageSchema = require('./manage');
 // const maplestorySchema = require('./maplestory');
@@ -34,6 +35,7 @@ module.exports = {
     // Room: roomSchema,
     User: userSchema,
     Gifticon: gifticonSchema,
+    Category: categorySchema
     // Permission: permissionSchema,
     // Manage: manageSchema,
     // Maplestory: maplestorySchema,
