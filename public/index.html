@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link href="dist/fontawesome/css/all.min.css" rel="stylesheet">
@@ -112,7 +113,7 @@
             </li> -->
             <li class="nav-header">GIFTICONS</li>
             <li class="nav-item" id="pages">
-              <a href="#" id="gifticons" class="nav-link">
+              <a href="javascript:void(0);" id="gifticons" class="nav-link" onclick="page_move('gifticons.html')">
                 <i class="nav-icon fas fa-calendar-alt"></i>
                 <p>
                   Calendar
@@ -154,32 +155,16 @@
   <!-- REQUIRED SCRIPTS -->
 
   <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
   <!-- Bootstrap -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
   <!-- AdminLTE -->
   <script src="dist/js/adminlte.js"></script>
 
-  <!-- OPTIONAL SCRIPTS -->
-  <script src="plugins/chart.js/Chart.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="dist/js/pages/dashboard3.js"></script>
-  <!-- <script>
-    function page_move(url) {
-      $("#content-wrapper").load(url);
-    }
-  </script> -->
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script>
-    document.querySelector("#pages").addEventListener("click", function (element) {
-
-      let url = `${element.target.id}.html`;
-      console.dir(url);
+    function page_move(url) {
       $("#load_page").load(url);
-      // alert("테스트");
-    });
+    }
   </script>
 </body>
 

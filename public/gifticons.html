@@ -21,8 +21,6 @@
 </head>
 
 <body>
-
-
     <div id="app">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -36,7 +34,6 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
 
         <!-- Main content -->
         <section class="content">
@@ -102,6 +99,48 @@
 
                                         <!-- info-box를 실제데이터는 gifticons에 담은다음, 보여줄때는 viewCons같은곳에 담아서 위의 nav-button 클릭에따라 표출되는 배열을 변경 -->
                                         <div class="row">
+                                            <div class="col-lg-3 col-6" v-for="gifticon of gifticons">
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h5>{{gifticon.name}}</h5>
+                                                        <p>{{gifticon.expire_date}}</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <!-- 여기 아이콘세팅 가져온 아이콘의 색에따라 백그라운드를 지정해주는것도 괜찮을듯 -->
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                    <a href="#myModal" class="small-box-footer" data-toggle="modal"
+                                                        data-target="#myModal">
+                                                        <!-- 여기서 바코드를 띄우는 창이나 상세 기간을 보거나 -->
+                                                        더보기 <i class="fas fa-arrow-circle-right"></i>
+                                                    </a>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                                        aria-labelledby="myModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close"><span
+                                                                            aria-hidden="true">&times;</span></button>
+                                                                    <h4 class="modal-title" id="myModalLabel">Modal 제목
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Modal 내용
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal">닫기</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
                                             <div class="col-lg-3 col-6">
                                                 <!-- small card -->
                                                 <!-- bg는 아이콘의 색에따라 바뀌고싶음 -->
@@ -198,7 +237,8 @@
             el: '#app',
             data: {
                 message: '안녕하세요 Vue!',
-                mainCategories: []
+                mainCategories: [],
+                gifticons: []
             },
             created: function () {
                 this.$nextTick(async function () {
@@ -206,7 +246,12 @@
                     response = await axios.get('v0/category');
                     let categories = _.get(response.data, 'categories');
                     // console.dir(categories);
-                    app.mainCategories = categories
+                    app.mainCategories = categories;
+
+                    response = await axios.get('v0/gifticon');
+                    let gifticons = _.get(response.data, 'gifticons');
+                    app.gifticons = gifticons;
+                    console.dir(app.gifticons);
                 });
             }
         })
